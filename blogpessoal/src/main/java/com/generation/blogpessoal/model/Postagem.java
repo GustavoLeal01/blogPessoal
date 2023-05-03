@@ -24,6 +24,10 @@ public class Postagem {
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private Long id;
 
+@ManyToOne
+@JsonIgnoreProperties("postagem")
+private Usuario usuario;
+
 @NotBlank(message = "O atributo título é Obrigatorio!")
 @Size(min = 5, max = 100, message = "O atributo título devbe conter no mínimo 05 e no máximo 100 caracteres" )
 private String titulo;
@@ -77,6 +81,14 @@ public Tema getTema() {
 
 public void setTema(Tema tema) {
 	this.tema = tema;
+}
+
+public Usuario getUsuario() {
+	return usuario;
+}
+
+public void setUsuario(Usuario usuario) {
+	this.usuario = usuario;
 }
 
 
